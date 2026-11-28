@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ソデイカ漁場候補図</title>
+<style>
+body{margin:0;font-family:"Meiryo","Yu Gothic","Hiragino Sans",sans-serif;background:#f4f6f8;color:#1b2430;font-size:17px;line-height:1.6}
+header{background:#0b3d5c;color:#fff;padding:12px 16px}
+header h1{font-size:20px;margin:0}
+header p{margin:2px 0 0;font-size:14px;opacity:.85}
+main{max-width:900px;margin:0 auto;padding:8px 16px 32px}
+.bar{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.bar button{font-size:16px;padding:8px 12px;border:1px solid #9fb3c4;background:#fff;border-radius:6px;color:#1b2430;cursor:pointer}
+.bar button.on{background:#0b3d5c;color:#fff;border-color:#0b3d5c}
+.bar button.sub{font-size:15px;padding:6px 10px}
+.lbl{font-size:14px;color:#4a5866;align-self:center;min-width:3em}
+.info{background:#fff;border:1px solid #d5dde5;border-radius:8px;padding:10px 12px;margin:8px 0}
+.when{font-size:20px;font-weight:bold}
+.warn{background:#fff3cd;border:1px solid #e0b400;border-radius:8px;padding:10px 12px;margin:8px 0;font-weight:bold}
+.note{font-size:14px;color:#4a5866}
+.cmp button{font-size:15px;padding:6px 10px;border:1px solid #0b3d5c;background:#e8f1f7;color:#0b3d5c;border-radius:6px;cursor:pointer}
+figure{margin:8px 0}
+figure img{width:100%;height:auto;display:block;background:#fff;border:1px solid #d5dde5}
+.missing{padding:40px 12px;text-align:center;background:#fff;border:1px dashed #9fb3c4}
+footer{font-size:14px;color:#4a5866;border-top:1px solid #d5dde5;margin-top:24px;padding-top:8px}
+footer p:empty,.note:empty,#offs:empty{display:none}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><h1>ソデイカ漁場候補図</h1><p>ページ更新：2026年11月28日 18:01（日本時間）</p></header>
+<main>
+<p>ソデイカの好漁場になりやすい条件（水深400mの水温が13.5〜16.5℃で、海の流れが穏やかなところ）がそろう海を、海洋モデルの解析と予報から毎日描いています。赤い枠の中が候補です。実際の海と違うことがありますので、目安としてお使いください。</p>
+<p class="note" id="offs"></p>
+<div id="warn"></div>
+<div id="ready">
+<div class="bar" id="kinds"></div>
+<div class="bar" id="styles"></div>
+<div class="bar"><span class="lbl">回</span><span id="runs" class="bar" style="margin:0"></span></div>
+<div class="bar"><span class="lbl">対象日</span><span id="tgts" class="bar" style="margin:0"></span></div>
+<p class="note" id="dnote"></p>
+<div class="info"><div class="when" id="when"></div><div id="about"></div><div class="note" id="snote"></div>
+<div class="bar cmp" id="cmp"></div></div>
+<figure id="fig"></figure>
+</div>
+<div class="missing" id="notready" hidden>準備中です。</div>
+<footer>
+<p><b>免責事項</b>　この図は海洋モデルの解析と予報から描いたもので、観測ではありません。流れの強さは観測と確かめていません。候補の外でも獲れること、候補の中でも獲れないことがあります。操業の判断はご自身でお願いします。</p>
+<p>本サイトの画像は外部データをもとに自動生成しています。データ元の配信状況等により更新が遅延・停止する場合があります。</p>
+<p>出典　海洋データ：E.U. Copernicus Marine Service「Global Ocean Physics Analysis and Forecast」（doi:10.48670/moi-00016）。好漁場の条件：中武凌一「奄美等水産資源利用開発推進事業（沿岸域資源利用開発調査：ソデイカ資源合理的利用支援調査）」鹿児島県水産技術開発センター 令和2年度事業報告書。</p>
+<p>この図は E.U. Copernicus Marine Service の情報を使って作っています（doi:10.48670/moi-00016）。</p>
+</footer>
+</main>
+<script>
+const D = {"runs": [{"run": "20261128", "label": "11/28の回", "targets": [{"t": "20261128", "label": "今日 11/28", "when": "2026年11月28日の海（解析）", "imgs": {"kouho400b": "img/20261128/kouho400b_20261128.png?v=1795815040", "kouho400": "img/20261128/kouho400_20261128.png?v=1795815040", "t200b": "img/20261128/t200b_20261128.png?v=1795815040", "t200": "img/20261128/t200_20261128.png?v=1795815040", "sshb": "img/20261128/sshb_20261128.png?v=1795815040", "ssh": "img/20261128/ssh_20261128.png?v=1795815040"}}, {"t": "20261206", "label": "8日後の予報 12/6", "when": "2026年12月6日の予報（11月28日の回、8日後）", "imgs": {"kouho400b": "img/20261128/kouho400b_20261206.png?v=1795815040", "kouho400": "img/20261128/kouho400_20261206.png?v=1795815040", "t200b": "img/20261128/t200b_20261206.png?v=1795815040", "t200": "img/20261128/t200_20261206.png?v=1795815040", "sshb": "img/20261128/sshb_20261206.png?v=1795815040", "ssh": "img/20261128/ssh_20261206.png?v=1795815040"}}]}, {"run": "20261121", "label": "11/21の回", "targets": [{"t": "20261121", "label": "解析 11/21", "when": "2026年11月21日の海（解析）", "imgs": {"kouho400b": "img/20261121/kouho400b_20261121.png?v=1795229761", "kouho400": "img/20261121/kouho400_20261121.png?v=1795229758", "t200b": "img/20261121/t200b_20261121.png?v=1795229762", "t200": "img/20261121/t200_20261121.png?v=1795229759", "sshb": "img/20261121/sshb_20261121.png?v=1795229763", "ssh": "img/20261121/ssh_20261121.png?v=1795229760"}}, {"t": "20261130", "label": "9日後の予報 11/30", "when": "2026年11月30日の予報（11月21日の回、9日後）", "imgs": {"kouho400b": "img/20261121/kouho400b_20261130.png?v=1795229767", "kouho400": "img/20261121/kouho400_20261130.png?v=1795229764", "t200b": "img/20261121/t200b_20261130.png?v=1795229768", "t200": "img/20261121/t200_20261130.png?v=1795229765", "sshb": "img/20261121/sshb_20261130.png?v=1795229769", "ssh": "img/20261121/ssh_20261130.png?v=1795229766"}}]}], "kinds": [{"key": "kouho400", "label": "400m水温", "about": "色は水深400mの水温です。緑に塗って赤い枠で囲んだところが、400mの水温が13.5〜16.5℃で、海面の流れが秒速0.4m未満の海です。矢印は海面の流れの向きと強さです。"}, {"key": "t200", "label": "200m水温", "about": "色と数字は水深200mの水温です。CTDで測った値と見比べられます。赤い枠は漁場候補と同じもの（400mの水温で決めたもの）です。"}, {"key": "ssh", "label": "海面高度", "about": "色は海面の高さです。赤いほど高く、青いほど低くなっています。紺の線は流れが秒速0.4m以上になる縁で、黒潮のおおよその位置です。海上保安庁の海流図と見比べられます。"}], "styles": [{"key": "b", "label": "漁場候補が明るい図"}, {"key": "", "label": "漁場候補が暗い図"}], "styleNoteB": "赤い枠の外を暗くして、候補を見やすくした図です。中身は「漁場候補が暗い図」と同じです。", "warn": "", "datenote": "毎日の図を10日分見られます。それぞれ、その日の海（解析）と、予報のいちばん先の日の図です。同じ日の予報と、その日になってからの図を比べると、予報の当たり外れが分かります。毎朝、前の晩に出た予報で新しくなります。", "offseason": ""};
+let k = 0, s = 0, r = 0, t = 0;
+function btns(id, items, cur, fn, cls) {
+  const el = document.getElementById(id); el.innerHTML = "";
+  items.forEach((txt, i) => {
+    const b = document.createElement("button"); b.textContent = txt;
+    b.className = (cls || "") + (i === cur ? " on" : "");
+    b.onclick = () => fn(i); el.appendChild(b);
+  });
+}
+function others(tdate) {   // 同じ対象日の図がある、ほかの回
+  const out = [];
+  D.runs.forEach((run, ri) => run.targets.forEach((x, ti) => {
+    if (x.t === tdate && ri !== r) out.push([ri, ti]);
+  }));
+  return out;
+}
+function view() {
+  if (!D.runs.length) { document.getElementById("ready").hidden = true; document.getElementById("notready").hidden = false; return; }
+  const run = D.runs[r]; if (t >= run.targets.length) t = 0;
+  const tg = run.targets[t], kind = D.kinds[k], st = D.styles[s];
+  btns("kinds", D.kinds.map(x => x.label), k, i => { k = i; view(); });
+  btns("styles", D.styles.map(x => x.label), s, i => { s = i; view(); }, "sub");
+  btns("runs", D.runs.map(x => x.label), r, i => { r = i; t = 0; view(); }, "sub");
+  btns("tgts", run.targets.map(x => x.label), t, i => { t = i; view(); }, "sub");
+  document.getElementById("when").textContent = tg.when;
+  document.getElementById("about").textContent = kind.about;
+  document.getElementById("snote").textContent = st.key === "b" ? D.styleNoteB : "";
+  const cmp = document.getElementById("cmp"); cmp.innerHTML = "";
+  others(tg.t).forEach(([ri, ti]) => {
+    const x = D.runs[ri].targets[ti];
+    const b = document.createElement("button");
+    b.textContent = (ti === 0 && D.runs[ri].run === tg.t ? "同じ日の解析（" : "同じ日の予報（") + D.runs[ri].label + "）を見る";
+    b.onclick = () => { r = ri; t = ti; view(); window.scrollTo(0, 0); };
+    cmp.appendChild(b);
+  });
+  const im = tg.imgs[kind.key + st.key];
+  document.getElementById("fig").innerHTML = im
+    ? '<a href="' + im + '" target="_blank" rel="noopener"><img src="' + im + '" alt="' + kind.label + '"></a>'
+    : '<div class="missing">この図は今ありません</div>';
+}
+document.getElementById("dnote").textContent = D.datenote;
+document.getElementById("offs").textContent = D.offseason;
+if (D.warn) { const w = document.createElement("div"); w.className = "warn"; w.textContent = D.warn; document.getElementById("warn").appendChild(w); }
+view();
+</script>
+</body>
+</html>
